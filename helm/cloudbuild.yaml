@@ -21,3 +21,6 @@ tags: ['cloud-builders-community']
 substitutions:
   _HELM_VERSION: 3.15.4
   _IMAGE_LOCATION: us-docker.pkg.dev/optoro-artifacts/cloud-run-helm-charts/helm
+
+options:
+  logging: CLOUD_LOGGING_ONLY
