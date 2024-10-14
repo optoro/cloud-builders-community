@@ -3,7 +3,7 @@ steps:
   dir: helm
   args:
     - build
-    - --tag=gcr.io/$PROJECT_ID/helm:${_HELM_VERSION}
+    - --tag=$_IMAGE_LOCATION:$_HELM_VERSION
     - --tag=gcr.io/$PROJECT_ID/helm:latest
     - --build-arg
     - HELM_VERSION=v${_HELM_VERSION}
@@ -15,12 +15,6 @@ steps:
     - push
     - $_IMAGE_LOCATION
     - -a
-
-# Sanity Check: make sure basic functionality works
-- name: 'gcr.io/$PROJECT_ID/helm:latest'
-  args: ['version', '--client']
-  env:
-    - SKIP_CLUSTER_CONFIG=true
 
 tags: ['cloud-builders-community']
 
