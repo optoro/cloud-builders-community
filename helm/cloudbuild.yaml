@@ -1,6 +1,7 @@
 steps:
 - name: gcr.io/cloud-builders/docker
-  args: 
+  dir: helm
+  args:
     - build
     - --tag=gcr.io/$PROJECT_ID/helm:${_HELM_VERSION}
     - --tag=gcr.io/$PROJECT_ID/helm:latest
@@ -9,6 +10,7 @@ steps:
     - .
 
 - name: gcr.io/cloud-builders/docker
+  dir: helm
   args:
     - push
     - $_IMAGE_LOCATION
